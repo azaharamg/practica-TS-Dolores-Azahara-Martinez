@@ -11,9 +11,9 @@ const monica: Persona = new Persona(
   '1977-07-21',
   'rojo',
   'Mujer',
-  new Direccion('Carrer de Can Serra', 7, 3, 'A', 7001, 'Palma de Mallorca', 'Baleares'),
-  new Mail('personal', 'monica.marin@example.com'),
-  new Telefono('movil', 631476342),
+  [new Direccion('Carrer de Can Serra', 7, 3, 'A', 7001, 'Palma de Mallorca', 'Baleares')],
+  [new Mail('personal', 'monica.marin@example.com')],
+  [new Telefono('movil', 631476342)],
   'Española'
 );
 
@@ -25,9 +25,9 @@ const samantha: Persona = new Persona(
   '1987-06-22',
   'amarillo',
   'Mujer',
-  new Direccion('Cranford Street', 293, 2, 'C', 8023, 'Christchurch', 'Canterbury'),
-  new Mail('profesional', 'samantha.lewis@example.com'),
-  new Telefono('movil', 6376024000),
+  [new Direccion('Cranford Street', 293, 2, 'C', 8023, 'Christchurch', 'Canterbury')],
+  [new Mail('profesional', 'samantha.lewis@example.com')],
+  [new Telefono('movil', 6376024000)],
   'Neozelandesa'
 );
 
@@ -39,9 +39,9 @@ const tiago: Persona = new Persona(
   '1977-07-20',
   'azul',
   'Hombre',
-  new Direccion('Avenida Paulista', 200, 1, 'B', 1311, 'Sao Paulo', 'State of Sao Paul'),
-  new Mail('personal', 'tiago.ramos@example.com'),
-  new Telefono('movil', 1016152184),
+  [new Direccion('Avenida Paulista', 200, 1, 'B', 1311, 'Sao Paulo', 'State of Sao Paul')],
+  [new Mail('personal', 'tiago.ramos@example.com')],
+  [new Telefono('movil', 1016152184)],
   'Brasileño'
 );
 
@@ -61,11 +61,11 @@ const actualizarUsuario = (dniBuscado: string, direccion: Direccion, mail: Mail,
   }
 
   // Añadir una nueva dirección
-  usuarioBuscado.direcciones = direccion;
+  usuarioBuscado.agregarDireccion(direccion);
   // Añadir un nuevo mail
-  usuarioBuscado.mails = mail;
+  usuarioBuscado.agregarMail(mail);
   // Añadir un nuevo télefono
-  usuarioBuscado.telefonos = telefono;
+  usuarioBuscado.agregarTelefono(telefono);
 };
 
 actualizarUsuario(

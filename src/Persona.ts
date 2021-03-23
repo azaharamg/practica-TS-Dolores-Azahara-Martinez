@@ -13,9 +13,9 @@ export class Persona {
   private readonly cumpleaños: string;
   private colorFavorito: color;
   private readonly sexo: sexo;
-  public _direcciones: Direccion;
-  public _mails: Mail;
-  public _telefonos: Telefono;
+  public _direcciones: Array<Direccion>;
+  public _mails: Array<Mail>;
+  public _telefonos: Array<Telefono>;
   private notas: string;
 
   constructor(
@@ -26,9 +26,9 @@ export class Persona {
     cumpleaños: string,
     colorFavorito: color,
     sexo: sexo,
-    direcciones: Direccion,
-    mails: Mail,
-    telefonos: Telefono,
+    direcciones: Array<Direccion>,
+    mails: Array<Mail>,
+    telefonos: Array<Telefono>,
     notas: string
   ) {
     this.nombre = nombre;
@@ -48,19 +48,35 @@ export class Persona {
     return this._dni;
   }
 
-  public set direcciones(direccion: Direccion) {
-    this._direcciones = direccion;
+  public agregarDireccion(nuevaDireccion: Direccion): void {
+    this._direcciones.push(nuevaDireccion);
   }
 
-  public set mails(mail: Mail) {
-    this._mails = mail;
+  public agregarMail(nuevoMail: Mail): void {
+    this._mails.push(nuevoMail);
   }
 
-  public set telefonos(telefono: Telefono) {
-    this._telefonos = telefono;
+  public agregarTelefono(nuevoTelefono: Telefono): void {
+    this._telefonos.push(nuevoTelefono);
+  }
+
+  private informacionDeContacto(listado: Array<any>): string {
+    let result: string = '';
+
+    listado.forEach((elemento) => {
+      result += `${elemento}\n `;
+    });
+
+    return result;
   }
 
   public mostrarInformacion(): string {
-    return `Los datos personales de ${this.nombre} ${this.apellidos} son:\nEdad:${this.edad}\nDNI:${this._dni}\nCumpleaños:${this.cumpleaños}\nColor Favorito:${this.colorFavorito}\nSexo:${this.sexo}\nDirecciones:\n ${this._direcciones}\nMails:\n ${this._mails}\nTeléfonos:\n ${this._telefonos}\nNotas:\n${this.notas}`;
+    return `Los datos personales de ${this.nombre} ${this.apellidos} son:\nEdad:${this.edad}\nDNI:${
+      this._dni
+    }\nCumpleaños:${this.cumpleaños}\nColor Favorito:${this.colorFavorito}\nSexo:${
+      this.sexo
+    }\nDirecciones:\n ${this.informacionDeContacto(this._direcciones)}\nMails:\n ${this.informacionDeContacto(
+      this._mails
+    )}\nTeléfonos:\n ${this.informacionDeContacto(this._telefonos)}\nNotas:\n${this.notas}`;
   }
 }

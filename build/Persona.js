@@ -18,17 +18,24 @@ class Persona {
     get dni() {
         return this._dni;
     }
-    set direcciones(direccion) {
-        this._direcciones = direccion;
+    agregarDireccion(nuevaDireccion) {
+        this._direcciones.push(nuevaDireccion);
     }
-    set mails(mail) {
-        this._mails = mail;
+    agregarMail(nuevoMail) {
+        this._mails.push(nuevoMail);
     }
-    set telefonos(telefono) {
-        this._telefonos = telefono;
+    agregarTelefono(nuevoTelefono) {
+        this._telefonos.push(nuevoTelefono);
+    }
+    informacionDeContacto(listado) {
+        let result = '';
+        listado.forEach((elemento) => {
+            result += `${elemento}\n `;
+        });
+        return result;
     }
     mostrarInformacion() {
-        return `Los datos personales de ${this.nombre} ${this.apellidos} son:\nEdad:${this.edad}\nDNI:${this._dni}\nCumpleaños:${this.cumpleaños}\nColor Favorito:${this.colorFavorito}\nSexo:${this.sexo}\nDirecciones:\n ${this._direcciones}\nMails:\n ${this._mails}\nTeléfonos:\n ${this._telefonos}\nNotas:\n${this.notas}`;
+        return `Los datos personales de ${this.nombre} ${this.apellidos} son:\nEdad:${this.edad}\nDNI:${this._dni}\nCumpleaños:${this.cumpleaños}\nColor Favorito:${this.colorFavorito}\nSexo:${this.sexo}\nDirecciones:\n ${this.informacionDeContacto(this._direcciones)}\nMails:\n ${this.informacionDeContacto(this._mails)}\nTeléfonos:\n ${this.informacionDeContacto(this._telefonos)}\nNotas:\n${this.notas}`;
     }
 }
 exports.Persona = Persona;
